@@ -1,0 +1,34 @@
+{
+  "classTime": [
+    {
+        "name":"第 1、2 节",
+        "startTime":"0830",
+        "endTime":"1005"
+    },
+    {
+        "name":"第 3、4 节",
+        "startTime":"1025",
+        "endTime":"1200"
+    },
+    {
+        "name":"第 5、6、7 节",
+        "startTime":"1350",
+        "endTime":"1615"
+    },
+    {
+        "name":"第 6、7 节",
+        "startTime":"1440",
+        "endTime":"1615"
+    },
+    {
+        "name":"第 8、9 节",
+        "startTime":"1630",
+        "endTime":"1800"
+    },
+    {
+        "name":"第 10、11、12 节",
+        "startTime":"1830",
+        "endTime":"2100"
+    }
+  ]
+}
