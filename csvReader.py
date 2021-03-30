@@ -14,20 +14,38 @@ def main():
 	# 基础信息
 	timeList = []
 	thingList = []
-
+	flag = 0
 	# 读取 csv 文件
-	with open('half_hour.csv','r', encoding="utf-8") as f:
+	with open('things.csv','r', encoding="utf-8") as f:
 		lines=csv.reader(f,delimiter=' ')
 		for line in lines:
-			#print(mytime)
-			mytime = line[0].replace(":","")
-			#print(len(mytime1))
-			if(len(mytime)==3) :
-				timeList.append("0"+mytime+"00")
-			else :
-				timeList.append(mytime+"00")
+			if(len(line)==1) :
+				if(line[0]=="AM") :
+					flag = 0
+					continue
+				elif(line[0]=="PM") :
+					flag = 1
+					continue
+				else :
+					print("error!")
+					break
+			
+			time_tmp1 = line[0].split(':')
+			if(flag==0) :
+				mytime = line[0].replace(":","")
+				#print(len(mytime1))
+				if(len(mytime)==3) :
+					timeList.append("0"+mytime+"00")
+				else :
+					timeList.append(mytime+"00")
+			if(flag==1) :
+				time_tmp2 = int(time_tmp1[0]) + 12
+				mytime = str(time_tmp2)+str(time_tmp1[1]) 
+				if(len(mytime)==3) :
+					timeList.append("0"+mytime+"00")
+				else :
+					timeList.append(mytime+"00")
 
-#			timeList.append(line[0])
 			thingList.append(line[1])
 
 	headStr = '{\n"thingsInfo":[\n'

@@ -85,15 +85,15 @@ def icsCreateAndSave():
 		thing["UID"] = UID_Create()
 		thing["CREATED"] = DONE_CreatedTime
 		thing["DTSTAMP"] = DONE_CreatedTime
-		startTime = json.dumps(thing["Time"])[1:7]
+		endTime = json.dumps(thing["Time"])[1:7]
 		thing_info = json.dumps(thing["Thing"],ensure_ascii=False)
 		thingInfo = thing_info.replace('"','')
 		#print(thingInfo)
-
-		time_tmp1 = time.strptime(string+startTime,'%Y%m%d%H%M%S')
+		
+		time_tmp1 = time.strptime(string+endTime,'%Y%m%d%H%M%S')
 		#print(time_tmp1)
-		time_tmp2 = datetime.datetime.fromtimestamp(int(time.mktime(time_tmp1))) + datetime.timedelta(days = 0, minutes = 30)
-		endTime = time_tmp2.strftime('%H%M%S')
+		time_tmp2 = datetime.datetime.fromtimestamp(int(time.mktime(time_tmp1))) - datetime.timedelta(days = 0, minutes = 30)
+		startTime = time_tmp2.strftime('%H%M%S')
 
 		eventString = eventString+"BEGIN:VEVENT\nCREATED:"+thing["CREATED"]
 		eventString = eventString+"\nUID:"+thing["UID"]
